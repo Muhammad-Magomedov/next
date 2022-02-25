@@ -1,18 +1,12 @@
-import '../main.css'
+import '/main.css'
+import {Provider} from "react-redux";
+import {store} from '../redux/configureStore';
 
-export default function MyApp({Component, pageProps}) {
+// This default export is required in a new `pages/_app.js` file.
+export default function MyApp({ Component, pageProps }) {
     return (
-        <>
-        <Component {...pageProps}/>
-            {/*<style jsx global>*/}
-            {/*    {*/}
-            {/*        `*/}
-            {/*            body {*/}
-            {/*            font-family: 'Syne Tactile';*/}
-            {/*            }*/}
-            {/*        `*/}
-            {/*    }*/}
-            {/*</style>*/}
-        </>
+        <Provider store={store}>
+            <Component {...pageProps} />
+        </Provider>
     )
 }

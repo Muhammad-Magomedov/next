@@ -1,41 +1,27 @@
-import Link from 'next/link'
+import React from 'react';
 import Head from "next/head";
+import Link from 'next/link'
+import style from '../styles/MainLayout.module.css'
 
-export function MainLayout({children, title = 'Next App'}) {
+const MainLayout = ({children}) => {
     return (
         <>
-            <Head>
-                <title>{title} | Next Course</title>
-            </Head>
-            <nav>
-                <Link href={'/'}><a>Home</a></Link>
-                <Link href={'/about'}><a>About</a></Link>
-                <Link href={'/posts'}><a>Posts</a></Link>
-            </nav>
-            <main>
+         <Head>
+             <meta charSet={'utf-8'}/>
+             <title>Home</title>
+         </Head>
+         <header className={style.header}>
+             <ul className={style.menu}>
+                 <li><Link href={'/about'}><a className={style.a}>About</a></Link></li>
+                 <li><Link href={'/posts'}><a className={style.a}>Posts</a></Link></li>
+                 <li><Link href={'/'}><a className={style.a}>Home</a></Link></li>
+             </ul>
+         </header>
+            <div>
                 {children}
-            </main>
-            <style jsx>{`
-                 nav {
-                 position: fixed;
-                 height: 60px;
-                 top: 0;
-                 left: 0;
-                 right: 0;
-                 background: darkblue;
-                 display: flex;
-                 justify-content: space-around;
-                 align-items: center;
-                 }     
-                 nav a {
-                 color: #fff;
-                 text-decoration: none;
-                 }
-                 main {
-                 margin-top: 60px;
-                 padding: 1rem;
-                 }
-            `}</style>
+            </div>
         </>
-    )
-}
+    );
+};
+
+export default MainLayout;
